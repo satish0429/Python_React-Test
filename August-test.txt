@@ -1,0 +1,112 @@
+
+# PYTHON QUESTIONS:
+# > Write a Python function that takes a list of dictionaries and returns a new list that contains only the dictionaries that satisfy a given condition.
+# > Write a Python function that takes a list of integers and returns a new list that contains the largest subarray with non-negative sum.
+# > Write a Python program that uses image processing to analyze and manipulate images.
+# > Write a Python program that reads a binary file and performs some data manipulation
+
+# quetion 1
+def filter_dicts(list_dics, condition):
+    """function takes list of dictionaries as an args and returns
+    those dicts which meets the condition"""
+    final_ist = [d for d in list_dicts if condition(d)]
+    return final_lst
+    
+
+# question2
+def long_non_negative_nums(nums):
+    max_sum = float('-inf')
+    start = 0
+    end = 1
+    sub_array = 0
+    
+    for i in range(len(nums)):
+        current_sum += nums[i]
+        
+        if current_sum < 0:
+            current_sum = 0
+            sub_array = i+1
+            
+        if current_sum > max_sum:
+            max_sum = current_sum
+            start = sub_array
+            end = i
+            
+        if end == -1:
+            return 
+        return nums[start:end]
+
+#question 3
+from PIL import Image
+def image_procesing(img_path):
+    image = Image.open(img_path)
+    
+    image.show()
+    
+    rotate_image = image.rotate(90)
+    resize_image = image.resize(1000, 800)
+    rotate_image.show()
+    resize_image.show()
+    
+    
+#queestion 4
+def dat_manipulation(binary_file_path):
+    with open(binary_file_path, 'rb') as binary_file:
+        binary_data = binary_file.read()
+        
+        filtered_values = list(struct.iter_unpack('i', binary_data))
+        
+    return filtred_valuesDATABASE QUESTION:
+
+
+# >show the total quantity by product category, but only for the individual products whose quantity is above the average quantity for all products.
+# # The products table has following fields
+# # -id
+# # -product_name
+# # -quantity
+# # -product_category
+
+# Data base
+# quesiton1
+# query
+
+SELECT product_category, SUM(quantity) AS TOTAL_QUANTITY
+FROM product_table
+where quantity > (
+    SELECT AVG(quantity)
+    FROM product_table
+    )
+GROUP BY product_table
+
+
+
+# React js questions
+
+#first execute command to create wheather-app
+# checkout cd wheathr-app
+
+import React, {useEffect, useState} from 'react'
+
+function App(){
+    const [weatherData, setWeatherData] = useState(None);
+    
+    useEffect((=> {
+        geolocation,getCurrentPositon(coords)=> {
+            fetch('wheather reportulr').then((response)=> response.json).then((data)=> setWeatherData(data))
+            .catch((error)=> console.log('Error fetching'))
+        }
+    }));
+}
+
+return (
+    <div className = "App>
+    <h1><Weather App/h1>
+    {weatherDaa? (
+        <h2>{weatherDatta.ame}</h2>
+        <p>Temparature : {weatherData.tmp}</p>
+        )
+    }
+    </div>
+    )
+
+Export default App
